@@ -1,3 +1,3 @@
-(() => {
-  console.log("github contri test")
-})();
+window.onload = () => {
+  console.log("DOM is ready!");
+};
