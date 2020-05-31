@@ -10,7 +10,7 @@ body {
   position: relative;
 }
 
-.wrapper {
+#wrapper {
   width: 100%;
   overflow: auto;
 }
