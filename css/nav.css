@@ -3,9 +3,28 @@ nav.first-nav {
 }
 
 nav.first-nav button.btn {
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.25);
 }
 
 nav.first-nav button.btn:hover {
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+nav.second-nav button.btn {
+  background-color: rgba(255, 255, 255, 0.25);
+}
+
+nav.second-nav button.btn:hover {
+  background-color: rgba(255, 255, 255, 0.35);
+}
+
+nav.second-nav button.board-name {
+  font-size: 1rem;
+  background-color: transparent;
+  letter-spacing: 1px;
+}
+
+nav.second-nav span.badge {
+  font-size: 80%;
+  font-weight: normal;
 }
