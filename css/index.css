@@ -15,6 +15,10 @@ input, textarea, select, button, a.btn {
   box-shadow: none !important;
 }
 
+.stretch-x {
+  transform: scale(1.1, 1);
+}
+
 #wrapper {
   width: 100%;
   overflow: auto;
@@ -34,13 +38,41 @@ div.trello-list h6 {
   margin-bottom: 0;
 }
 
+div.trello-list h6.trello-title {
+  font-weight: normal;
+}
+
 div.trello-list button {
   font-size: 0.9rem;
   color: #6b778c;
   background-color: transparent;
-  transform: scale(1.1, 1);
+  box-sizing: border-box;
 }
 
 div.trello-list button:hover {
   background-color: rgba(0, 0, 0, 0.08);
+}
+
+div.trello-card {
+  cursor: pointer;
+  padding: 0 10px 10px 10px;
+  background-color: #fff;
+  border-radius: 3px;
+  box-shadow: 0 1px 0 rgba(9,30,66,.25);
+}
+
+div.trello-card:hover {
+  background-color: #F4F5F7;
+}
+
+.trello-label {
+  box-sizing: border-box;
+  width: 40px;
+  height: 8px;
+  border-radius: 4px;
+  background-color: royalblue;
+}
+
+#add-new-card {
+  flex-grow: 1;
 }
