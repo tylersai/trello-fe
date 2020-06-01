@@ -1,5 +1,7 @@
 #wrapper > div.trello-list {
+  min-width: 300px;
   width: 300px;
+  max-width: 300px;
   box-sizing: border-box;
   background-color: #ebecf0;
   color: #172b4d;
@@ -27,7 +29,9 @@ div.trello-list button:hover {
 }
 
 button.add-list {
+  min-width: 300px;
   width: 300px;
+  max-width: 300px;
   color: #172b4d;
   font-size: 14px;
   font-weight: normal;

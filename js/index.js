@@ -2,9 +2,10 @@ const END_POINT = "http://localhost:8080";
 // const END_POINT = "https://trello-clone-ppm.herokuapp.com";
 
 const addListBtn = `
-  <button class="btn btn-lg add-list m-1 text-left">
+  <button class="btn btn-lg add-list m-1 text-left mr-3">
     <i class="fa fa-plus"></i>&nbsp;&nbsp;&nbsp;Add another list
   </button>
+  <div style="width: 0.5rem">&nbsp;</div>
 `;
 
 const getCard = (card) => {
