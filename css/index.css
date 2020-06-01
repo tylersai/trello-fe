@@ -23,4 +23,5 @@ input, textarea, select, button, a.btn {
   width: 100%;
   overflow: auto;
   display: flex;
+  align-items: flex-start;
 }
