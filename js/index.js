@@ -48,6 +48,7 @@ function limitWrapperHeight() {
   const nav2 = document.getElementById("second-nav").clientHeight;
   const wrapper = document.getElementById("wrapper");
   wrapper.style.maxHeight = (body - nav1 - nav2) + "px";
+  wrapper.style.minHeight = (body - nav1 - nav2) + "px";
 }
 
 function fetchData() {
