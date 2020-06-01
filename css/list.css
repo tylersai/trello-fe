@@ -1,0 +1,27 @@
+#wrapper > div.trello-list {
+  width: 300px;
+  box-sizing: border-box;
+  background-color: #ebecf0;
+  color: #172b4d;
+}
+
+div.trello-list h6 {
+  flex-grow: 1;
+  font-size: 14px;
+  margin-bottom: 0;
+}
+
+div.trello-list h6.trello-title {
+  font-weight: normal;
+}
+
+div.trello-list button {
+  font-size: 0.9rem;
+  color: #6b778c;
+  background-color: transparent;
+  box-sizing: border-box;
+}
+
+div.trello-list button:hover {
+  background-color: rgba(0, 0, 0, 0.08);
+}
