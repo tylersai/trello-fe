@@ -30,7 +30,7 @@ const getList = (list) => {
       <button class="btn btn-sm text-left" id="add-new-card">
         <i class="fa fa-plus"></i>&nbsp;&nbsp;Add another card
       </button>
-      <button class="btn btn-sm stretch-x"><i class="fa fa-ellipsis-h"></i></button>
+      <button class="btn btn-sm"><i class="fa fa-window-maximize"></i></button>
     </div>
   </div>
   `;
