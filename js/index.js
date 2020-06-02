@@ -2,11 +2,11 @@
 const END_POINT = "https://trello-clone-ppm.herokuapp.com";
 
 const loader = `
-<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+<div class="lds-ellipsis trello-fadein"><div></div><div></div><div></div><div></div></div>
 `;
 
 const logo = `
-<h3 class="text-light" id="logo">Trello</h3>
+<h4 class="text-light my-0" id="logo">Trello</h4>
 `;
 
 const addListBtn = `
@@ -28,7 +28,7 @@ const getCard = (card) => {
 const getList = (list) => {
   const cardsStr = list.cards.map(c => getCard(c)).join("");
   return `
-  <div class="trello-list rounded m-1 px-2 py-1 pb-2">
+  <div class="trello-list rounded m-1 px-2 py-1 pb-2 trello-fadein">
     <div class="d-flex justify-content-between align-items-center mb-1">
       <h6 class="pl-2">${list.title}</h6>
       <button class="btn btn-sm stretch-x"><i class="fa fa-ellipsis-h"></i></button>
@@ -64,12 +64,17 @@ function limitWrapperHeight() {
 }
 
 function fetchData() {
+  setLoading(true);
   fetch(END_POINT + "/list")
     .then(res => res.json())
     .then(data => {
+      setLoading(false);
       console.log(data);
       const listStr = data.map(l => getList(l)).join("") + addListBtn;
       document.getElementById("wrapper").innerHTML = listStr;
     })
-    .catch(err => console.log(err));
+    .catch(err => {
+      setLoading(false);
+      console.log(err);
+    });
 }

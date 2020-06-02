@@ -42,6 +42,9 @@ nav.second-nav span.badge {
 
 #logo {
   opacity: 0.8;
+  font-family: 'Pacifico', cursive;
+  font-weight: normal;
+  animation: fadeInLogo 150ms ease-out;
 }
 
 .lds-ellipsis {
@@ -55,7 +58,7 @@ nav.second-nav span.badge {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.85);
   animation-timing-function: cubic-bezier(0, 1, 1, 0);
 }
 .lds-ellipsis div:nth-child(1) {
@@ -96,5 +99,14 @@ nav.second-nav span.badge {
   }
   100% {
     transform: translate(12px, 0);
+  }
+}
+
+@keyframes fadeInLogo {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.8;
   }
 }
