@@ -21,3 +21,40 @@ div.trello-card:hover {
 #add-new-card {
   flex-grow: 1;
 }
+
+/* Card Modal Section */
+#cardModal .modal-content {
+  background-color: #F4F5F7;
+}
+
+.modal-header {
+  position: relative;
+}
+
+#inListDesc {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  font-size: 12px;
+}
+
+#cardDesc {
+  resize: none;
+  width: 100%;
+  min-height: 150px;
+  height: 100%;
+  font-size: 14px;
+  border-radius: 5px;
+  border: 2px solid transparent;
+  padding: 8px 12px;
+  color: #172b4d;
+  background-color: #F4F5F7;
+  -moz-appearance: none;
+  transition: all 120ms ease-out;
+}
+
+#cardDesc:focus {
+  resize: both;
+  background-color: #fff;
+  border-color: #0079bf;
+}
