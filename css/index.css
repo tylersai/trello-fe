@@ -30,6 +30,10 @@ input, textarea, select, button, a.btn {
   animation: fadeIn 150ms ease-out forwards;
 }
 
+.trello-black {
+  color: #172b4d;
+}
+
 @keyframes fadeIn {
   0% {
     opacity: 0;
