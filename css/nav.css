@@ -31,13 +31,7 @@ nav.second-nav span.badge {
 }
 
 #centerhold {
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  position: absolute;
-  background-color: transparent;
-  z-index: 3;
+  flex-grow: 1;
 }
 
 #logo {
