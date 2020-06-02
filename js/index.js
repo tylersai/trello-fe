@@ -1,5 +1,13 @@
-const END_POINT = "http://localhost:8080";
-// const END_POINT = "https://trello-clone-ppm.herokuapp.com";
+// const END_POINT = "http://localhost:8080";
+const END_POINT = "https://trello-clone-ppm.herokuapp.com";
+
+const loader = `
+<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+`;
+
+const logo = `
+<h3 class="text-light" id="logo">Trello</h3>
+`;
 
 const addListBtn = `
   <button class="btn btn-lg add-list m-1 text-left mr-3">
@@ -34,6 +42,10 @@ const getList = (list) => {
     </div>
   </div>
   `;
+};
+
+const setLoading = (isLoading) => {
+  document.getElementById("centerhold").innerHTML = isLoading ? loader:logo;
 };
 
 window.onload = () => {
