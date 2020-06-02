@@ -38,3 +38,18 @@ input, textarea, select, button, a.btn {
     opacity: 1;
   }
 }
+
+.avatar {
+  min-height: 32px;
+  max-height: 32px;
+  min-width: 32px;
+  max-width: 32px;
+  border-radius: 50%;
+  background-color: transparent;
+  border: none;
+}
+
+button.avatar.profile {
+  background-image: url("/img/profile.jpg");
+  background-size: cover;
+}
