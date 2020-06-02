@@ -35,13 +35,13 @@ div.trello-card:hover {
   position: absolute;
   left: 0;
   bottom: 0;
-  font-size: 12px;
+  font-size: 10px;
 }
 
 #cardDesc {
   resize: none;
   width: 100%;
-  min-height: 150px;
+  min-height: 60px;
   height: 100%;
   font-size: 14px;
   border-radius: 5px;
