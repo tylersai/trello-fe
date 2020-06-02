@@ -1,6 +1,8 @@
 // const END_POINT = "http://localhost:8080";
 const END_POINT = "https://trello-clone-ppm.herokuapp.com";
 
+var lists = [];
+
 const loader = `
 <div class="lds-ellipsis trello-fadein"><div></div><div></div><div></div><div></div></div>
 `;
@@ -20,11 +22,11 @@ const getLabel = (label) => {
   return `<span class="trello-label d-inline-block mr-1" style="background-color: ${label.color}"></span>`;
 }
 
-const getCard = (card) => {
+const getCard = (card, list) => {
   const lblStr = card.labels.map(lbl => getLabel(lbl)).join("");
   const cardPaddingTop = lblStr ? "0":"10px"; // add padding-top 10px if there's no label
   return `
-  <div class="trello-card d-block mb-2" style="padding-top: ${cardPaddingTop}">
+  <div class="trello-card d-block mb-2" style="padding-top: ${cardPaddingTop}" data-toggle="modal" data-target="#cardModal" onclick="cardClicked(event)" list-id="${list.id}" card-id="${card.id}">
     ${lblStr}
     <h6 class="trello-title">${card.title}</h6>
   </div>
@@ -32,7 +34,7 @@ const getCard = (card) => {
 };
 
 const getList = (list) => {
-  const cardsStr = list.cards.map(c => getCard(c)).join("");
+  const cardsStr = list.cards.map(c => getCard(c, list)).join("");
   return `
   <div class="trello-list rounded m-1 px-2 py-1 pb-2 trello-fadein">
     <div class="d-flex justify-content-between align-items-center mb-1">
@@ -76,6 +78,7 @@ function fetchData() {
     .then(data => {
       setLoading(false);
       console.log(data);
+      lists = data;
       const listStr = data.map(l => getList(l)).join("") + addListBtn;
       document.getElementById("wrapper").innerHTML = listStr;
     })
@@ -83,4 +86,21 @@ function fetchData() {
       setLoading(false);
       console.log(err);
     });
+}
+
+function cardClicked(e) {
+  let target = e.target;
+  if(!(target.nodeName == "div" || target.nodeName == "DIV")) {
+    target = target.parentElement;
+  }
+  const listId = target.getAttribute("list-id");
+  const cardId = target.getAttribute("card-id");
+
+  console.log(listId, cardId);
+  const list = lists.find(l => l.id == listId);
+  const card = list.cards.find(c => c.id == cardId);
+
+  document.getElementById("cardTitle").innerHTML = card.title;
+  document.getElementById("inListTitle").innerHTML = list.title;
+  document.getElementById("cardDesc").innerHTML = card.description;
 }
