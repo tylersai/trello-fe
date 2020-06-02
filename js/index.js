@@ -16,10 +16,16 @@ const addListBtn = `
   <div style="width: 0.5rem">&nbsp;</div>
 `;
 
+const getLabel = (label) => {
+  return `<span class="trello-label d-inline-block mr-1" style="background-color: ${label.color}"></span>`;
+}
+
 const getCard = (card) => {
+  const lblStr = card.labels.map(lbl => getLabel(lbl)).join("");
+  const cardPaddingTop = lblStr ? "0":"10px"; // add padding-top 10px if there's no label
   return `
-  <div class="trello-card d-block mb-2">
-    <span class="trello-label d-inline-block"></span>
+  <div class="trello-card d-block mb-2" style="padding-top: ${cardPaddingTop}">
+    ${lblStr}
     <h6 class="trello-title">${card.title}</h6>
   </div>
   `;
