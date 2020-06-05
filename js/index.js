@@ -29,6 +29,10 @@ const getCard = (card, list) => {
   <div class="trello-card d-block mb-2" style="padding-top: ${cardPaddingTop}" data-toggle="modal" data-target="#cardModal" onclick="cardClicked(event)" list-id="${list.id}" card-id="${card.id}">
     ${lblStr}
     <h6 class="trello-title">${card.title}</h6>
+    <div class="d-flex flex-wrap justify-content-end">
+      <div class="avatar">SH</div>
+      <div class="avatar">PP</div>
+    </div>
   </div>
   `;
 };

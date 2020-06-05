@@ -51,6 +51,17 @@ input, textarea, select, button, a.btn {
   border-radius: 50%;
   background-color: transparent;
   border: none;
+  line-height: 32px;
+  text-align: center;
+  background-color: #dfe1e6;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-top: 2px;
+  margin-left: 3px;
+}
+.avatar:hover {
+  background-color: #c1c7d0;
 }
 
 button.avatar.profile {
