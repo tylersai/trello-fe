@@ -52,6 +52,15 @@ const getList = (list) => {
   `;
 };
 
+const getChkliItem = (chk) => {
+  return `
+  <div class="chkli d-flex align-items-center">
+    <p><i class="fa fa-check-circle"></i></p>
+    <p class="flex-grow-1 pl-2">${chk.item}</p>
+  </div>
+  `;
+}
+
 const setLoading = (isLoading) => {
   document.getElementById("centerhold").innerHTML = isLoading ? loader:logo;
 };
@@ -102,4 +111,7 @@ function cardClicked(e) {
   document.getElementById("cardTitle").innerHTML = card.title;
   document.getElementById("inListTitle").innerHTML = list.title;
   document.getElementById("cardDesc").innerHTML = card.description;
+
+  const chkliStr = card.checklists.map(li => getChkliItem(li)).join("");
+  document.getElementById("chkli-wrapper").innerHTML = chkliStr || '<p style="opacity: 0.7">No Checklist</p>';
 }
