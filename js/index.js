@@ -20,18 +20,31 @@ const addListBtn = `
 
 const getLabel = (label) => {
   return `<span class="trello-label d-inline-block mr-1" style="background-color: ${label.color}"></span>`;
-}
+};
+
+const getMember = (mem) => {
+  const names = mem.name.split(" "); // split the names, eg. "Nial James Horan" would be ["Nial", "James", "Horan"]
+  let initials = names[0][0]; // first initial
+  if(names.length > 1) {
+    // if name have multiple words, take the initial of the last word
+    initials += names[names.length -1][0];
+  } else if(names[0].length > 1) {
+    // if name have only one word like "Sai", take the 2nd letter of the first word if there's any
+    initials += names[0][1];
+  }
+  return `<div class="avatar">${initials}</div>`;
+};
 
 const getCard = (card, list) => {
   const lblStr = card.labels.map(lbl => getLabel(lbl)).join("");
+  const memStr = card.members.map(mem => getMember(mem)).join("");
   const cardPaddingTop = lblStr ? "0":"10px"; // add padding-top 10px if there's no label
   return `
   <div class="trello-card d-block mb-2" style="padding-top: ${cardPaddingTop}" data-toggle="modal" data-target="#cardModal" onclick="cardClicked(event)" list-id="${list.id}" card-id="${card.id}">
     ${lblStr}
     <h6 class="trello-title">${card.title}</h6>
     <div class="d-flex flex-wrap justify-content-end">
-      <div class="avatar">SH</div>
-      <div class="avatar">PP</div>
+      ${memStr}
     </div>
   </div>
   `;
