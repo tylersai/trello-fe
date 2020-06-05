@@ -27,6 +27,10 @@ div.trello-card:hover {
   background-color: #F4F5F7;
 }
 
+.modal-body h6 {
+  padding: 8px 0 0 12px;
+}
+
 .modal-header {
   position: relative;
 }
@@ -38,11 +42,15 @@ div.trello-card:hover {
   font-size: 10px;
 }
 
-#cardDesc {
+p#cardDesc, #chkli-wrapper {
+  padding: 0 12px 8px 12px;
+  font-size: 14px;
+}
+
+textarea#cardDesc {
   resize: none;
   width: 100%;
   min-height: 60px;
-  height: 100%;
   font-size: 14px;
   border-radius: 5px;
   border: 2px solid transparent;
@@ -53,8 +61,12 @@ div.trello-card:hover {
   transition: all 120ms ease-out;
 }
 
-#cardDesc:focus {
+textarea#cardDesc:focus {
   resize: both;
   background-color: #fff;
   border-color: #0079bf;
+}
+
+.chkli > p {
+  margin-bottom: 0.4rem;
 }

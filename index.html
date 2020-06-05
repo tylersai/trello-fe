@@ -51,43 +51,10 @@
         <button class="btn btn-sm text-light m-1"><i class="fa fa-ellipsis-h"></i>&nbsp;&nbsp;Show Menu</button>
       </div>
     </nav>
-<!-- 
-    <div id="wrapper" class="p-2">
-      <div class="trello-list rounded m-1 px-2 py-1 pb-2">
-        <div class="d-flex justify-content-between align-items-center mb-1">
-          <h6 class="pl-2">Product Backlog</h6>
-          <button class="btn btn-sm stretch-x"><i class="fa fa-ellipsis-h"></i></button>
-        </div>
-        <div class="trello-card d-block mb-2">
-          <span class="trello-label d-inline-block"></span>
-          <h6 class="trello-title">Go to Grocery Store</h6>
-        </div>
-        <div class="trello-card d-block mb-2">
-          <span class="trello-label d-inline-block"></span>
-          <h6 class="trello-title">Go to Grocery Store</h6>
-        </div>
-        <div class="d-flex justify-content-between align-items-center">
-          <button class="btn btn-sm text-left" id="add-new-card">
-            <i class="fa fa-plus"></i>&nbsp;&nbsp;Add another card
-          </button>
-          <button class="btn btn-sm stretch-x"><i class="fa fa-ellipsis-h"></i></button>
-        </div>
-      </div>
-      <div class="trello-list rounded m-1 px-2 py-1 pb-2">
-        <div class="d-flex justify-content-between align-items-center mb-1">
-          <h6 class="pl-2">Doing</h6>
-          <button class="btn btn-sm stretch-x"><i class="fa fa-ellipsis-h"></i></button>
-        </div>
-      </div>
-      <button class="btn btn-lg add-list m-1 text-left mr-3">
-        <i class="fa fa-plus"></i>&nbsp;&nbsp;&nbsp;Add another list
-      </button>
-      <div style="width: 0.5rem">&nbsp;</div>
-    </div> -->
 
     <div id="wrapper" class="p-2"></div>
 
-    <div id="cardModal" class="modal fade" role="dialog" aria-labelledby="cardTitle" aria-hidden="true">
+    <div id="cardModal" class="modal fade trello-black" role="dialog" aria-labelledby="cardTitle" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -96,7 +63,33 @@
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
           </div>
           <div class="modal-body p-1">
-            <textarea id="cardDesc"></textarea>
+            <div class="d-flex mt-3">
+              <h6>
+                <i class="fa fa-bars"></i>
+              </h6>
+              <div class="flex-grow-1">
+                <h6>Description</h6>
+                <p id="cardDesc"></p>
+              </div>
+            </div>
+            <div class="d-flex">
+              <h6>
+                <i class="fa fa-list-ul"></i>
+              </h6>
+              <div class="flex-grow-1">
+                <h6>Checklist</h6>
+                <div id="chkli-wrapper">
+                  <div class="chkli d-flex align-items-center">
+                    <p><i class="fa fa-check-circle"></i></p>
+                    <p class="flex-grow-1 pl-2">Go to the shopping mall</p>
+                  </div>
+                  <div class="chkli d-flex align-items-center">
+                    <p><i class="fa fa-check-circle-o"></i></p>
+                    <p class="flex-grow-1 pl-2">Check this if finished</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-sm btn-success"><i class="fa fa-save"></i> Save</button>
