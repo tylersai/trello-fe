@@ -96,7 +96,6 @@ function cardClicked(e) {
   const listId = target.getAttribute("list-id");
   const cardId = target.getAttribute("card-id");
 
-  console.log(listId, cardId);
   const list = lists.find(l => l.id == listId);
   const card = list.cards.find(c => c.id == cardId);
 
