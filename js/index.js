@@ -32,7 +32,7 @@ const getMember = (mem) => {
     // if name have only one word like "Sai", take the 2nd letter of the first word if there's any
     initials += names[0][1];
   }
-  return `<div class="avatar">${initials}</div>`;
+  return `<div class="avatar" onclick="avatarClicked(event)">${initials}</div>`;
 };
 
 const getCard = (card, list) => {
@@ -131,4 +131,8 @@ function cardClicked(e) {
 
   const chkliStr = card.checklists.map(li => getChkliItem(li)).join("");
   document.getElementById("chkli-wrapper").innerHTML = chkliStr || '<p style="opacity: 0.7">No Checklist</p>';
+}
+
+function avatarClicked(event) {
+  event.stopPropagation();
 }
