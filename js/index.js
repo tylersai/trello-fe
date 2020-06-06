@@ -32,7 +32,7 @@ const getMember = (mem) => {
     // if name have only one word like "Sai", take the 2nd letter of the first word if there's any
     initials += names[0][1];
   }
-  return `<div class="avatar" onclick="avatarClicked(event)">${initials}</div>`;
+  return `<div class="avatar" onclick="preventModal(event)">${initials}</div>`;
 };
 
 const getCard = (card, list) => {
@@ -45,8 +45,8 @@ const getCard = (card, list) => {
     <h6 class="trello-title">${card.title}</h6>
     <div class="d-flex flex-wrap justify-content-between align-items-end">
       <div class="d-flex flex-nowrap align-items-center">
-        <small class="d-inline-block m-1 mr-2 text-secondary"><i class="fa fa-bars"></i></small>
-        <small class="d-inline-block m-1 mr-2 text-secondary"><i class="fa fa-comment-o"></i></small>
+      ${card.description ? '<small class="d-inline-block m-1 mr-2 text-secondary"><i class="fa fa-bars"></i></small>':''}
+      ${card.checklists.length ? '<small class="d-inline-block m-1 mr-2 text-secondary"><i class="fa fa-check-square-o"></i></small>':''}
       </div>
       <div class="d-flex flex-wrap justify-content-end flex-grow-1 align-items-center">
         ${memStr}
@@ -121,13 +121,16 @@ function fetchData() {
     });
 }
 
-function cardClicked(e) {
-  let target = e.target;
-  if(!(target.nodeName == "div" || target.nodeName == "DIV")) {
-    target = target.parentElement;
+const getListAndCardIds = (target) => {
+  if(target.getAttribute("card-id")) {
+    return [target.getAttribute("list-id"), target.getAttribute("card-id")];
+  } else {
+    return getListAndCardIds(target.parentElement);
   }
-  const listId = target.getAttribute("list-id");
-  const cardId = target.getAttribute("card-id");
+}
+
+function cardClicked(e) {
+  const [listId, cardId] = getListAndCardIds(e.target);
 
   const list = lists.find(l => l.id == listId);
   const card = list.cards.find(c => c.id == cardId);
@@ -140,6 +143,6 @@ function cardClicked(e) {
   document.getElementById("chkli-wrapper").innerHTML = chkliStr || '<p style="opacity: 0.7">No Checklist</p>';
 }
 
-function avatarClicked(event) {
+function preventModal(event) {
   event.stopPropagation();
 }
