@@ -43,9 +43,16 @@ const getCard = (card, list) => {
   <div class="trello-card d-block mb-2" style="padding-top: ${cardPaddingTop}" data-toggle="modal" data-target="#cardModal" onclick="cardClicked(event)" list-id="${list.id}" card-id="${card.id}">
     ${lblStr}
     <h6 class="trello-title">${card.title}</h6>
-    <div class="d-flex flex-wrap justify-content-end">
-      ${memStr}
+    <div class="d-flex flex-wrap justify-content-between align-items-end">
+      <div class="d-flex flex-nowrap align-items-center">
+        <small class="d-inline-block m-1 mr-2 text-secondary"><i class="fa fa-bars"></i></small>
+        <small class="d-inline-block m-1 mr-2 text-secondary"><i class="fa fa-comment-o"></i></small>
+      </div>
+      <div class="d-flex flex-wrap justify-content-end flex-grow-1 align-items-center">
+        ${memStr}
+      </div>
     </div>
+    
   </div>
   `;
 };
