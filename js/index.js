@@ -12,7 +12,7 @@ const logo = `
 `;
 
 const addListBtn = `
-  <button class="btn btn-lg add-list m-1 text-left mr-3">
+  <button class="btn btn-lg add-list m-1 text-left mr-3" id="add-list-btn" onclick="addNewList()">
     <i class="fa fa-plus"></i>&nbsp;&nbsp;&nbsp;Add another list
   </button>
   <div style="width: 0.5rem">&nbsp;</div>
@@ -145,4 +145,24 @@ function cardClicked(e) {
 
 function avatarClicked(event) {
   event.stopPropagation();
+}
+
+function addNewList() {
+  const addNewListBtn = document.getElementById("add-list-btn");
+  const rect = addNewListBtn.getBoundingClientRect();
+  console.log(rect);
+
+  const popup = document.createElement("div");
+  popup.style.boxSizing = "content-box";
+  popup.className = "rounded trello-fadein p-1";
+  popup.innerHTML = `<input type="text" style="width: 100%"/><button class="btn btn-sm btn-success m-1">Add</button>`;
+  popup.style.zIndex = "10";
+  popup.style.backgroundColor = "rgba(200, 255, 255, 0.7)";
+  popup.style.position = "absolute";
+
+  popup.style.top = rect.top + "px";
+  popup.style.left = rect.left + "px";
+  popup.style.width = rect.width + "px";
+
+  document.getElementById("wrapper").after(popup);
 }
