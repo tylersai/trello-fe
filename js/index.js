@@ -167,7 +167,6 @@ function wrapperScrolled() {
 }
 
 function toggelAddListPopup(isOpen) {
-  console.log(addListPopup);
   if(addListPopup) {
     addListPopup.style.display = isOpen ? "block":"none";
   }
