@@ -57,7 +57,15 @@
       </div>
     </nav>
 
-    <div id="wrapper" class="p-2"></div>
+    <div id="wrapper" class="p-2" onscroll="wrapperScrolled()"></div>
+
+    <div class="rounded trello-fadein p-1" id="add-list-popup">
+      <input type="text" style="width: 100%"/>
+      <div class="d-flex justify-content-between align-items-center">
+        <button class="btn btn-sm btn-success m-1">Add</button>
+        <button class="btn btn-sm my-1 mx-2 p-0 text-danger" style="font-size: large;"><i class="fa fa-close"></i></button>
+      </div>
+    </div>
 
     <div id="cardModal" class="modal fade trello-black" role="dialog" aria-labelledby="cardTitle" aria-hidden="true">
       <div class="modal-dialog">

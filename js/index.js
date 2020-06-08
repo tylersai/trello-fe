@@ -2,6 +2,7 @@
 const END_POINT = "https://trello-clone-ppm.herokuapp.com";
 
 var lists = [];
+var addListPopup;
 
 const loader = `
 <div class="lds-ellipsis trello-fadein"><div></div><div></div><div></div><div></div></div>
@@ -91,6 +92,7 @@ const setLoading = (isLoading) => {
 
 window.onload = () => {
   console.log("DOM is ready!");
+  addListPopup = document.getElementById("add-list-popup");
   limitWrapperHeight();
   fetchData();
 };
@@ -148,21 +150,25 @@ function avatarClicked(event) {
 }
 
 function addNewList() {
-  const addNewListBtn = document.getElementById("add-list-btn");
-  const rect = addNewListBtn.getBoundingClientRect();
-  console.log(rect);
+  if(addListPopup) {
+    const addNewListBtn = document.getElementById("add-list-btn");
+    const rect = addNewListBtn.getBoundingClientRect();
+    console.log(rect);
 
-  const popup = document.createElement("div");
-  popup.style.boxSizing = "content-box";
-  popup.className = "rounded trello-fadein p-1";
-  popup.innerHTML = `<input type="text" style="width: 100%"/><button class="btn btn-sm btn-success m-1">Add</button>`;
-  popup.style.zIndex = "10";
-  popup.style.backgroundColor = "rgba(200, 255, 255, 0.7)";
-  popup.style.position = "absolute";
+    addListPopup.style.top = rect.top + "px";
+    addListPopup.style.left = rect.left + "px";
+    addListPopup.style.width = rect.width + "px";
+    toggelAddListPopup(true);
+  }
+}
 
-  popup.style.top = rect.top + "px";
-  popup.style.left = rect.left + "px";
-  popup.style.width = rect.width + "px";
+function wrapperScrolled() {
+  console.log("Scrolled");
+}
 
-  document.getElementById("wrapper").after(popup);
+function toggelAddListPopup(isOpen) {
+  console.log(addListPopup);
+  if(addListPopup) {
+    addListPopup.style.display = isOpen ? "block":"none";
+  }
 }
