@@ -163,7 +163,11 @@ function addNewList() {
 }
 
 function wrapperScrolled() {
-  console.log("Scrolled");
+  if(addListPopup.style.display === "block") {
+    const rect = document.getElementById("add-list-btn").getBoundingClientRect();
+    addListPopup.style.top = rect.top + "px";
+    addListPopup.style.left = rect.left + "px";
+  }
 }
 
 function toggelAddListPopup(isOpen) {
