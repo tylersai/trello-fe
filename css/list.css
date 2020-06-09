@@ -42,6 +42,12 @@ button.add-list:hover {
   background-color: rgba(255, 255, 255, 0.15);
 }
 
+#list-title-input {
+  width: 100%;
+  font-size: 14px;
+  font-weight: 500;
+}
+
 #add-list-popup {
   display: none;
   z-index: 10;

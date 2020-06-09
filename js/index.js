@@ -1,5 +1,5 @@
-// const END_POINT = "http://localhost:8080";
-const END_POINT = "https://trello-clone-ppm.herokuapp.com";
+const END_POINT = "http://localhost:8080";
+// const END_POINT = "https://trello-clone-ppm.herokuapp.com";
 
 var lists = [];
 var addListPopup;
@@ -173,5 +173,35 @@ function wrapperScrolled() {
 function toggelAddListPopup(isOpen) {
   if(addListPopup) {
     addListPopup.style.display = isOpen ? "block":"none";
+  }
+}
+
+function saveNewList() {
+  const listTitleInput = document.getElementById("list-title-input");
+  const listTitle = listTitleInput.value;
+  if(listTitle) {
+    setLoading(true);
+    fetch(END_POINT + "/list", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        title: listTitle,
+        position: lists.length + 1
+      })
+    })
+    .then(res => res.json())
+    .then(data => {
+      console.log(data);
+      setLoading(false);
+      listTitleInput.value = "";
+      toggelAddListPopup(false);
+      fetchData();
+    })
+    .catch(err => {
+      console.log(err);
+      setLoading(false);
+    })
   }
 }
