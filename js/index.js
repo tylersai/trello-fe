@@ -173,6 +173,9 @@ function wrapperScrolled() {
 function toggelAddListPopup(isOpen) {
   if(addListPopup) {
     addListPopup.style.display = isOpen ? "block":"none";
+    if(isOpen) {
+      document.getElementById("list-title-input").focus();
+    }
   }
 }
 
