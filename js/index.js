@@ -203,7 +203,11 @@ function saveNewList() {
       setLoading(false);
       listTitleInput.value = "";
       toggelAddListPopup(false);
-      fetchData();
+      // fetchData();
+      const doc = new DOMParser().parseFromString(getList(data), "text/html");
+      const newlyAddedList = doc.body.children[0];
+      document.getElementById("add-list-btn").before(newlyAddedList);
+      lists.push(data);
     })
     .catch(err => {
       console.log(err);
