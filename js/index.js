@@ -176,6 +176,12 @@ function toggelAddListPopup(isOpen) {
   }
 }
 
+function inputEntered(event) {
+  if(event.keyCode == 13){
+    saveNewList();
+  }
+}
+
 function saveNewList() {
   const listTitleInput = document.getElementById("list-title-input");
   const listTitle = listTitleInput.value;
