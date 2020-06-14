@@ -54,3 +54,19 @@ button.add-list:hover {
   background-color: rgba(200, 255, 255, 0.7);
   position: absolute;
 }
+
+.list-menu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  display: none;
+  width: 280px;
+  background-color: #fafafa;
+  box-shadow: rgba(180, 180, 180, 0.7) 2px 2px 3px 1px;
+}
+
+.list-menu .list-group .list-group-item{
+  cursor: pointer;
+  font-size: 14px;
+}

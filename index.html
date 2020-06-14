@@ -61,10 +61,20 @@
 
     <div class="rounded trello-fadein p-1" id="add-list-popup">
     <input type="text" class="trello-black" id="list-title-input" onkeyup="inputEntered(event)"/>
-      <div class="d-flex justify-content-between align-items-center">
+      <div class="d-flex justify-content-between align-items-center pt-1">
         <button class="btn btn-sm btn-success m-1" onclick="saveNewList()">Add</button>
         <button class="btn btn-sm my-1 mx-2 p-0 text-danger" onclick="toggelAddListPopup(false)" style="font-size: large;"><i class="fa fa-close"></i></button>
       </div>
+    </div>
+
+    <div class="list-menu rounded trello-fadein p-1" id="list-menu-popup">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item list-group-item-action"><i class="fa fa-plus"></i>&nbsp;&nbsp;&nbsp;Add Card</li>
+        <li class="list-group-item list-group-item-action"><i class="fa fa-copy"></i>&nbsp;&nbsp;&nbsp;Copy List</li>
+        <li class="list-group-item list-group-item-action"><i class="fa fa-arrows"></i>&nbsp;&nbsp;&nbsp;Move List</li>
+        <li class="list-group-item list-group-item-action"><i class="fa fa-eye"></i>&nbsp;&nbsp;&nbsp;Watch</li>
+        <li class="list-group-item list-group-item-action"><i class="fa fa-trash"></i>&nbsp;&nbsp;&nbsp;Delete</li>
+      </ul>
     </div>
 
     <div id="cardModal" class="modal fade trello-black" role="dialog" aria-labelledby="cardTitle" aria-hidden="true">

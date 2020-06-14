@@ -1,8 +1,9 @@
-const END_POINT = "http://localhost:8080";
-// const END_POINT = "https://trello-clone-ppm.herokuapp.com";
+// const END_POINT = "http://localhost:8080";
+const END_POINT = "https://trello-clone-ppm.herokuapp.com";
 
 var lists = [];
 var addListPopup;
+var listMenuPopup;
 
 const loader = `
 <div class="lds-ellipsis trello-fadein"><div></div><div></div><div></div><div></div></div>
@@ -24,7 +25,7 @@ const getLabel = (label) => {
 };
 
 const getMember = (mem) => {
-  const names = mem.name.split(" "); // split the names, eg. "Nial James Horan" would be ["Nial", "James", "Horan"]
+  const names = mem.name.trim().split(" "); // split the names, eg. "Nial James Horan" would be ["Nial", "James", "Horan"]
   let initials = names[0][0]; // first initial
   if(names.length > 1) {
     // if name have multiple words, take the initial of the last word
@@ -33,6 +34,7 @@ const getMember = (mem) => {
     // if name have only one word like "Sai", take the 2nd letter of the first word if there's any
     initials += names[0][1];
   }
+  initials = initials.toUpperCase(); // make initials uppercase
   return `<div class="avatar" onclick="avatarClicked(event)">${initials}</div>`;
 };
 
@@ -64,7 +66,7 @@ const getList = (list) => {
   <div class="trello-list rounded m-1 px-2 py-1 pb-2 trello-fadein">
     <div class="d-flex justify-content-between align-items-center mb-1">
       <h6 class="pl-2">${list.title}</h6>
-      <button class="btn btn-sm stretch-x"><i class="fa fa-ellipsis-h"></i></button>
+      <button class="btn btn-sm stretch-x" onclick="listOption(event)"><i class="fa fa-ellipsis-h"></i></button>
     </div>
     ${cardsStr}
     <div class="d-flex justify-content-between align-items-center">
@@ -93,6 +95,13 @@ const setLoading = (isLoading) => {
 window.onload = () => {
   console.log("DOM is ready!");
   addListPopup = document.getElementById("add-list-popup");
+  listMenuPopup = document.getElementById("list-menu-popup");
+  
+  // window.addEventListener("click", e => {
+  //   if(!addListPopup.contains(e.target)) {
+  //     toggelAddListPopup(false);
+  //   }
+  // });
   limitWrapperHeight();
   fetchData();
 };
@@ -181,6 +190,7 @@ function toggelAddListPopup(isOpen) {
 
 function inputEntered(event) {
   if(event.keyCode == 13){
+    // detect Enter key, if user hits enter then save new list
     saveNewList();
   }
 }
@@ -217,4 +227,21 @@ function saveNewList() {
       setLoading(false);
     })
   }
+}
+
+function listOption(event) {
+  if(listMenuPopup.style.display == "block") {
+    listMenuPopup.style.display = "none";
+  } else {
+    let btn = event.target;
+    if(btn.nodeName == "i" || btn.nodeName == "I") {
+      btn = btn.parentNode;
+    }
+    const loc = btn.getBoundingClientRect();
+    console.log(loc);
+    listMenuPopup.style.top = loc.top + loc.height + 5 + "px";
+    listMenuPopup.style.left = loc.left + "px";
+    listMenuPopup.style.display = "block";
+  }
+
 }
