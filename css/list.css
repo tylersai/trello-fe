@@ -66,7 +66,13 @@ button.add-list:hover {
   box-shadow: rgba(180, 180, 180, 0.7) 2px 2px 3px 1px;
 }
 
-.list-menu .list-group .list-group-item{
+.list-menu .list-group .list-group-item {
   cursor: pointer;
   font-size: 14px;
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+}
+
+.list-menu .list-group .list-group-item > i {
+  opacity: 0.65;
 }
