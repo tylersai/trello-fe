@@ -4,6 +4,7 @@ const END_POINT = "https://trello-clone-ppm.herokuapp.com";
 var lists = [];
 var addListPopup;
 var listMenuPopup;
+var clickedListId;
 
 const loader = `
 <div class="lds-ellipsis trello-fadein"><div></div><div></div><div></div><div></div></div>
@@ -61,12 +62,12 @@ const getCard = (card, list) => {
 };
 
 const getList = (list) => {
-  const cardsStr = list.cards.map(c => getCard(c, list)).join("");
+  const cardsStr = list.cards ? list.cards.map(c => getCard(c, list)).join(""):"";
   return `
-  <div class="trello-list rounded m-1 px-2 py-1 pb-2 trello-fadein">
+  <div class="trello-list rounded m-1 px-2 py-1 pb-2 trello-fadein" list-id="${list.id}">
     <div class="d-flex justify-content-between align-items-center mb-1">
       <h6 class="pl-2">${list.title}</h6>
-      <button class="btn btn-sm stretch-x" onclick="listOption(event)"><i class="fa fa-ellipsis-h"></i></button>
+      <button class="btn btn-sm stretch-x" list-id="${list.id}" onclick="listOption(event)"><i class="fa fa-ellipsis-h"></i></button>
     </div>
     ${cardsStr}
     <div class="d-flex justify-content-between align-items-center">
@@ -172,6 +173,7 @@ function addNewList() {
 }
 
 function wrapperScrolled() {
+  closeOptionMenu();
   if(addListPopup.style.display === "block") {
     const rect = document.getElementById("add-list-btn").getBoundingClientRect();
     addListPopup.style.top = rect.top + "px";
@@ -230,6 +232,7 @@ function saveNewList() {
 }
 
 function listOption(event) {
+  event.stopPropagation();
   if(listMenuPopup.style.display == "block") {
     listMenuPopup.style.display = "none";
   } else {
@@ -237,6 +240,7 @@ function listOption(event) {
     if(btn.nodeName == "i" || btn.nodeName == "I") {
       btn = btn.parentNode;
     }
+    clickedListId = btn.getAttribute("list-id");
     const loc = btn.getBoundingClientRect();
     console.log(loc);
     listMenuPopup.style.top = loc.top + loc.height + 5 + "px";
@@ -244,4 +248,35 @@ function listOption(event) {
     listMenuPopup.style.display = "block";
   }
 
+}
+
+function closeOptionMenu() {
+  if(listMenuPopup.style.display == "block")
+    listMenuPopup.style.display = "none";
+}
+
+function goDeleteList() {
+  if(clickedListId) {
+    closeOptionMenu();
+    if(confirm("Are you sure to delete this list?")) {
+      setLoading(true);
+      fetch(`${END_POINT}/list/${clickedListId}`, {
+        method: "DELETE"
+      })
+      .then(res => {
+        console.log(res);
+        setLoading(false);
+        const listToRemove = document.querySelector(`.trello-list[list-id="${clickedListId}"]`);
+        if(res.ok && listToRemove) {
+          listToRemove.remove();
+          clickedListId = undefined;
+        }
+      })
+      .catch(err => {
+        console.log(err);
+        setLoading(false);
+        clickedListId = undefined;
+      })
+    }
+  }
 }

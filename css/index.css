@@ -1,5 +1,5 @@
 body {
-  background-image: url("/img/background.jpg");
+  background-image: url("../img/background.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center bottom;
@@ -65,6 +65,6 @@ input, textarea, select, button, a.btn {
 }
 
 button.avatar.profile {
-  background-image: url("/img/profile.jpg");
+  background-image: url(../img/profile.jpg);
   background-size: cover;
 }
