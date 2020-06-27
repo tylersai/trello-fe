@@ -15,7 +15,7 @@ const logo = `
 `;
 
 const addListBtn = `
-  <button class="btn btn-lg add-list m-1 text-left mr-3" id="add-list-btn" onclick="addNewList()">
+  <button class="btn btn-lg add-list m-1 text-left mr-3" id="add-list-btn" onclick="addNewList(event)">
     <i class="fa fa-plus"></i>&nbsp;&nbsp;&nbsp;Add another list
   </button>
   <div style="width: 0.5rem">&nbsp;</div>
@@ -83,7 +83,7 @@ const getList = (list) => {
 const getChkliItem = (chk) => {
   return `
   <div class="chkli d-flex align-items-center">
-    <p><i class="fa fa-check-circle"></i></p>
+    <p><i class="fa fa-check-circle${chk.checked ? "":"-o"}"></i></p>
     <p class="flex-grow-1 pl-2">${chk.item}</p>
   </div>
   `;
@@ -159,7 +159,8 @@ function avatarClicked(event) {
   event.stopPropagation();
 }
 
-function addNewList() {
+function addNewList(event) {
+  event.stopPropagation();
   if(addListPopup) {
     const addNewListBtn = document.getElementById("add-list-btn");
     const rect = addNewListBtn.getBoundingClientRect();
@@ -253,6 +254,9 @@ function listOption(event) {
 function closeOptionMenu() {
   if(listMenuPopup.style.display == "block")
     listMenuPopup.style.display = "none";
+  if(addListPopup.style.display === "block") {
+    toggelAddListPopup(false);
+  }
 }
 
 function goDeleteList() {
